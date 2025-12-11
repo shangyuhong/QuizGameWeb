@@ -1,0 +1,15 @@
+{
+  "name": "quiz-game-web",
+  "version": "1.0.0",
+  "description": "Quiz Game Web Version",
+  "scripts": {
+    "start": "live-server --port=8080 --open=/index.html"
+  },
+  "keywords": ["quiz", "game", "web"],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  }
+}
+

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Quiz Game</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- 主選單 -->
+    <div id="mainMenu" class="screen active">
+        <div class="container">
+            <h1>選擇模式</h1>
+            <button class="btn btn-blue" onclick="showPlayerSetup()">搶答模式</button>
+            <button class="btn btn-purple" onclick="showWordGroup()">詞膳團體</button>
+            <button class="btn btn-green" onclick="showGuessNameInput()">猜人名</button>
+        </div>
+    </div>
+
+    <!-- 玩家設置 -->
+    <div id="playerSetup" class="screen">
+        <div class="container">
+            <h1>輸入玩家人數</h1>
+            <div class="stepper">
+                <button class="stepper-btn" onclick="decreasePlayers()">-</button>
+                <span id="playerCount">1</span>
+                <button class="stepper-btn" onclick="increasePlayers()">+</button>
+            </div>
+            <p>玩家數量：<span id="playerCountDisplay">1</span></p>
+            <button class="btn btn-green" onclick="startQuizGame()">開始遊戲</button>
+        </div>
+    </div>
+
+    <!-- 搶答模式遊戲畫面 -->
+    <div id="quizGame" class="screen">
+        <div class="container">
+            <button class="btn-back" onclick="showMainMenu()">返回</button>
+            <div id="quizContent">
+                <button class="btn btn-blue" id="startBtn" onclick="startQuiz()">開始</button>
+            </div>
+            <div id="playerScores"></div>
+        </div>
+    </div>
+
+    <!-- 詞膳團體 -->
+    <div id="wordGroup" class="screen">
+        <div class="container">
+            <button class="btn-back" onclick="showMainMenu()">返回</button>
+            <div id="wordGroupContent">
+                <h1>詞膳團體</h1>
+                <button class="btn btn-blue" id="wordGroupStartBtn" onclick="startWordGroup()">開始</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 猜人名輸入 -->
+    <div id="guessNameInput" class="screen">
+        <div class="container">
+            <h1>猜人名</h1>
+            <label>輸入要猜的對象：</label>
+            <input type="text" id="nameInput" placeholder="請輸入名字">
+            <div class="button-group">
+                <button class="btn btn-gray" onclick="showMainMenu()">取消</button>
+                <button class="btn btn-blue" onclick="startGuessName()">確定</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 猜人名遊戲 -->
+    <div id="guessNameGame" class="screen">
+        <div class="container">
+            <button class="btn-back" onclick="showMainMenu()">返回</button>
+            <div id="questionsContainer" class="questions-grid"></div>
+            <button class="btn btn-blue btn-large" id="holdAnswerBtn">按住查看答案</button>
+        </div>
+    </div>
+
+    <!-- 答案彈窗 -->
+    <div id="answerPopup" class="popup">
+        <div class="popup-content">
+            <h2>答案</h2>
+            <div id="answerName" class="answer-text"></div>
+            <p class="hint">放開手指返回</p>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
+
