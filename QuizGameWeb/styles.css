@@ -429,6 +429,16 @@ label {
     max-width: 100px;
 }
 
+.btn-undo {
+    position: absolute;
+    top: 10px;
+    right: 120px;
+    z-index: 100;
+    padding: 8px 16px;
+    font-size: 1rem;
+    max-width: 100px;
+}
+
 .zhuyin-keyboard-area {
     flex: 1;
     display: flex;

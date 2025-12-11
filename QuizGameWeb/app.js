@@ -364,6 +364,7 @@ function renderZhuyinGame() {
     displayContent.innerHTML = `
         <div class="zhuyin-canvas" id="zhuyinCanvas">
             <button class="btn btn-blue btn-clear" onclick="clearZhuyinCanvas()">清除</button>
+            <button class="btn btn-orange btn-undo" onclick="undoLastZhuyin()">上一步</button>
         </div>
     `;
     renderZhuyinKeyboard();
@@ -503,9 +504,12 @@ function renderZhuyinCanvas() {
     const canvas = document.getElementById('zhuyinCanvas');
     if (!canvas) return;
     
-    // 清除現有元素（保留清除按鈕）
+    // 清除現有元素（保留按鈕）
     const clearBtn = canvas.querySelector('.btn-clear');
+    const undoBtn = canvas.querySelector('.btn-undo');
     canvas.innerHTML = '';
+    
+    // 重新添加清除按鈕
     if (clearBtn) {
         canvas.appendChild(clearBtn);
     } else {
@@ -513,6 +517,17 @@ function renderZhuyinCanvas() {
         btn.className = 'btn btn-blue btn-clear';
         btn.textContent = '清除';
         btn.onclick = clearZhuyinCanvas;
+        canvas.appendChild(btn);
+    }
+    
+    // 重新添加上一步按鈕
+    if (undoBtn) {
+        canvas.appendChild(undoBtn);
+    } else {
+        const btn = document.createElement('button');
+        btn.className = 'btn btn-orange btn-undo';
+        btn.textContent = '上一步';
+        btn.onclick = undoLastZhuyin;
         canvas.appendChild(btn);
     }
     
@@ -621,6 +636,13 @@ function makeDraggable(element, data) {
 function clearZhuyinCanvas() {
     gameState.zhuyinElements = [];
     renderZhuyinCanvas();
+}
+
+function undoLastZhuyin() {
+    if (gameState.zhuyinElements.length > 0) {
+        gameState.zhuyinElements.pop(); // 移除最後一個元素
+        renderZhuyinCanvas();
+    }
 }
 
 // 初始化
