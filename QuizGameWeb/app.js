@@ -93,6 +93,12 @@ function showMainMenu() {
     gameState.wordGroupStarted = false;
 }
 
+function confirmBackToMenu() {
+    if (confirm('確定要返回嗎？')) {
+        showMainMenu();
+    }
+}
+
 // 玩家設置
 function showPlayerSetup() {
     showScreen('playerSetup');
