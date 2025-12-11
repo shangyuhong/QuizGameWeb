@@ -343,3 +343,183 @@ label {
     margin: 40px 0;
 }
 
+/* 一叫高下遊戲樣式 */
+.zhuyin-game-container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    position: relative;
+}
+
+.zhuyin-display-area {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: white;
+    border-radius: 12px;
+    padding: 30px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    min-height: 200px;
+}
+
+.zhuyin-display-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.zhuyin-canvas {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background: #fafafa;
+    border: 2px dashed #d1d5db;
+    border-radius: 8px;
+    overflow: hidden;
+    min-height: 300px;
+}
+
+.zhuyin-draggable {
+    position: absolute;
+    font-size: 3rem;
+    font-weight: bold;
+    color: #1f2937;
+    background: white;
+    border: 2px solid #3b82f6;
+    border-radius: 8px;
+    padding: 10px 15px;
+    cursor: grab;
+    user-select: none;
+    touch-action: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.2s;
+    z-index: 10;
+    min-width: 60px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.zhuyin-draggable:active {
+    cursor: grabbing;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 20;
+}
+
+.btn-clear {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 100;
+    padding: 8px 16px;
+    font-size: 1rem;
+    max-width: 100px;
+}
+
+.zhuyin-keyboard-area {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background: #f3f4f6;
+    border-radius: 12px;
+    padding: 15px;
+    overflow-y: auto;
+    max-height: 40vh;
+    margin-bottom: 10px;
+}
+
+.zhuyin-keyboard-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
+
+.zhuyin-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    width: 100%;
+}
+
+.zhuyin-key {
+    min-width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    border: 2px solid #d1d5db;
+    border-radius: 8px;
+    background: white;
+    color: #1f2937;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+}
+
+.zhuyin-key:hover {
+    background: #e5e7eb;
+    border-color: #9ca3af;
+    transform: scale(1.05);
+}
+
+.zhuyin-key:active {
+    transform: scale(0.95);
+    background: #d1d5db;
+}
+
+.zhuyin-tones-row {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 2px solid #d1d5db;
+}
+
+.zhuyin-tone {
+    background: #fef3c7;
+    border-color: #fbbf24;
+}
+
+.zhuyin-tone:hover {
+    background: #fde68a;
+    border-color: #f59e0b;
+}
+
+.zhuyin-key-disabled {
+    background: #9ca3af !important;
+    color: #6b7280 !important;
+    border-color: #6b7280 !important;
+    cursor: not-allowed !important;
+    opacity: 0.6;
+}
+
+.zhuyin-key-disabled:hover {
+    background: #9ca3af !important;
+    transform: none !important;
+}
+
+.zhuyin-key-disabled:active {
+    background: #9ca3af !important;
+    transform: none !important;
+}
+
+#zhuyinHoldAnswerBtn,
+#holdAnswerBtn {
+    width: calc(100% + 40px);
+    max-width: none;
+    margin-left: -20px;
+    margin-right: -20px;
+    border-radius: 0;
+}
+
