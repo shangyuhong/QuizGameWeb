@@ -16,6 +16,7 @@
             <button class="btn btn-green" onclick="showGuessNameInput()">猜人名</button>
             <button class="btn btn-orange" onclick="showZhuyinKeyboard()">一叫高下</button>
             <button class="btn btn-red" onclick="showAdvancedTicTacToe()">進階圈叉</button>
+            <button class="btn btn-teal" onclick="showAdvancedTicTacToe2()">奇雞連連</button>
         </div>
     </div>
 
@@ -114,6 +115,26 @@
             <div id="ticTacToeBoard" class="tic-tac-toe-board"></div>
             <div id="ticTacToeResult" class="tic-tac-toe-result"></div>
             <button class="btn btn-blue" onclick="resetTicTacToe()" style="margin-top: 20px;">重新開始</button>
+        </div>
+    </div>
+
+    <!-- 進階井字遊戲 -->
+    <div id="advancedTicTacToe2" class="screen">
+        <div class="container">
+            <button class="btn-back" onclick="confirmBackToMenu()">返回</button>
+            <h2>奇雞連連</h2>
+            <div id="ticTacToe2Status" class="tic-tac-toe-status" style="display: none;"></div>
+            <div id="ticTacToe2Board" class="tic-tac-toe-board"></div>
+            <div id="ticTacToe2PiecesArea" class="tic-tac-toe-pieces-area">
+                <div class="player-pieces">
+                    <div id="playerOPieces" class="pieces-container"></div>
+                </div>
+                <div class="player-pieces">
+                    <div id="playerXPieces" class="pieces-container"></div>
+                </div>
+            </div>
+            <div id="ticTacToe2Result" class="tic-tac-toe-result"></div>
+            <button class="btn btn-blue" onclick="resetTicTacToe2()" style="margin-top: 20px;">重新開始</button>
         </div>
     </div>
 
