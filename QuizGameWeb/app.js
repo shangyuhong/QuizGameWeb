@@ -94,7 +94,7 @@ function showMainMenu() {
 }
 
 function confirmBackToMenu() {
-    if (confirm('確定要返回嗎？')) {
+    if (confirm('確定要退出遊戲嗎？')) {
         showMainMenu();
     }
 }
