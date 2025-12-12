@@ -32,7 +32,7 @@ function renderTicTacToe() {
             cell.textContent = gameState.ticTacToeBoard[i];
             cell.classList.add(`player-${gameState.ticTacToeBoard[i]}`);
         } else if (!gameState.gameOver) {
-            cell.addEventListener('click', () => handleCellClick(i));
+            cell.addEventListener('click', () => handleTicTacToeCellClick(i));
         }
         
         board.appendChild(cell);
@@ -60,7 +60,7 @@ function renderTicTacToe() {
     }
 }
 
-function handleCellClick(index) {
+function handleTicTacToeCellClick(index) {
     if (gameState.gameOver || gameState.ticTacToeBoard[index]) {
         return;
     }
@@ -77,41 +77,38 @@ function handleCellClick(index) {
     
     // 添加新的移動
     gameState.ticTacToeBoard[index] = player;
+    console.log('[player] 檢查玩家:', player);
     moves.push(index);
     
     // 檢查勝利
-    if (checkWin(player)) {
+    if (checkTicTacToeWin(player)) {
         gameState.gameOver = true;
         gameState.winner = player;
     } else {
         // 切換玩家
+        console.log('切換玩家');
         gameState.currentPlayer = player === 'O' ? 'X' : 'O';
     }
     
     renderTicTacToe();
 }
 
-function checkWin(player) {
+function checkTicTacToeWin(player) {
     const board = gameState.ticTacToeBoard;
+    // 插入一個 log，顯示目前的棋盤情況與當前正在檢查勝利的玩家
+    console.log('[checkWin] 檢查玩家:', player, '棋盤狀態:', board);
     const winPatterns = [
         [0, 1, 2], [3, 4, 5], [6, 7, 8], // 橫線
         [0, 3, 6], [1, 4, 7], [2, 5, 8], // 直線
         [0, 4, 8], [2, 4, 6] // 斜線
     ];
     
-    // 檢查玩家是否有連成一線
-    const playerMoves = gameState.playerMoves[player];
-    if (playerMoves.length < 3) return false;
-    
     // 檢查所有勝利模式
+    // 只要棋盤上有三個連續的格子都是該玩家的，就判定獲勝
     for (const pattern of winPatterns) {
         const [a, b, c] = pattern;
         if (board[a] === player && board[b] === player && board[c] === player) {
-            // 確認這三個位置都在玩家的移動歷史中
-            const hasAll = pattern.every(pos => playerMoves.includes(pos));
-            if (hasAll) {
-                return true;
-            }
+            return true;
         }
     }
     

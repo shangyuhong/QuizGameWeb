@@ -70,11 +70,11 @@ function renderReversiRotate() {
             if (value === null) {
                 // 空白格子：下自己的棋子
                 cell.classList.add('placeable');
-                cell.addEventListener('click', () => handleCellClick(i));
+                cell.addEventListener('click', () => handleReversiRotateCellClick(i));
             } else if (value !== gameState.reversiRotateCurrentPlayer) {
                 // 對方棋子：選擇移動
                 cell.classList.add('selectable');
-                cell.addEventListener('click', () => handleCellClick(i));
+                cell.addEventListener('click', () => handleReversiRotateCellClick(i));
             }
             // 自己的棋子：無效，不添加點擊事件
         }
@@ -202,7 +202,7 @@ function getMoveDirection(fromIndex, toIndex) {
 }
 
 // 處理格子點擊
-function handleCellClick(index) {
+function handleReversiRotateCellClick(index) {
     if (gameState.reversiRotateGameOver) return;
     
     const value = gameState.reversiRotateBoard[index];
