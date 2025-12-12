@@ -71,6 +71,17 @@ h2 {
     background: #2563eb;
 }
 
+.btn-blue:disabled {
+    background: #9ca3af;
+    color: #6b7280;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+.btn-blue:disabled:hover {
+    background: #9ca3af;
+}
+
 .btn-purple {
     background: #a855f7;
     color: white;
@@ -752,5 +763,206 @@ label {
     margin-left: -20px;
     margin-right: -20px;
     border-radius: 12px;
+}
+
+/* 黑白轉轉棋樣式 */
+.reversi-rotate-status {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #1f2937;
+    text-align: center;
+    margin-bottom: 20px;
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.reversi-rotate-board {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: 4px;
+    width: 100%;
+    max-width: 400px;
+    aspect-ratio: 1;
+    background: #1f2937;
+    padding: 4px;
+    border-radius: 8px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.reversi-rotate-cell {
+    background: #e5e7eb;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    font-weight: bold;
+    transition: all 0.2s;
+    user-select: none;
+    position: relative;
+    overflow: hidden;
+}
+
+/* 棋子滑動動畫 - 從一個格子滑動到另一個格子 */
+.reversi-piece-img.piece-sliding {
+    animation: pieceSlide 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes pieceSlide {
+    0% {
+        transform: translate(calc(-50% + 0px), calc(-50% + 0px));
+    }
+    100% {
+        transform: translate(calc(-50% + var(--delta-x, 0px)), calc(-50% + var(--delta-y, 0px)));
+    }
+}
+
+.reversi-rotate-cell.piece-black {
+    color: #1f2937;
+}
+
+.reversi-rotate-cell.piece-white {
+    color: #6b7280;
+}
+
+/* 棋子圖片樣式 */
+.reversi-piece-img {
+    width: 70%;
+    height: 70%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    object-fit: contain;
+    user-select: none;
+    pointer-events: none;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 2; /* 確保棋子在箭頭上方 */
+}
+
+.reversi-rotate-board.rotating .reversi-piece-img {
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.reversi-rotate-cell.selectable {
+    cursor: pointer;
+    background: #fef3c7;
+    border: 2px solid #fbbf24;
+}
+
+.reversi-rotate-cell.selectable:hover {
+    background: #fde68a;
+    transform: scale(0.95);
+}
+
+.reversi-rotate-cell.movable {
+    cursor: pointer;
+    background: #d1fae5;
+    border: 2px solid #22c55e;
+}
+
+.reversi-rotate-cell.movable:hover {
+    background: #a7f3d0;
+    transform: scale(0.95);
+}
+
+.reversi-rotate-cell.placeable {
+    cursor: pointer;
+    background: #dbeafe;
+    border: 2px solid #3b82f6;
+}
+
+.reversi-rotate-cell.placeable:hover {
+    background: #bfdbfe;
+    transform: scale(0.95);
+}
+
+.reversi-rotate-cell.selected {
+    border: 3px solid #f59e0b;
+    box-shadow: 0 0 15px rgba(245, 158, 11, 0.6);
+    background: #fef3c7;
+}
+
+.reversi-rotate-controls {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 20px;
+    width: 100%;
+    max-width: 400px;
+}
+
+.reversi-rotate-controls .btn {
+    flex: 1;
+    max-width: none;
+}
+
+.btn-indigo {
+    background: #6366f1;
+    color: white;
+}
+
+.btn-indigo:hover {
+    background: #4f46e5;
+}
+
+.btn-gray {
+    background: #6b7280;
+    color: white;
+}
+
+.btn-gray:hover {
+    background: #4b5563;
+}
+
+.btn-gray:disabled {
+    background: #9ca3af;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+/* 旋轉方向箭頭 */
+.rotate-arrow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 0;
+    height: 0;
+    opacity: 0.4;
+    pointer-events: none;
+    z-index: 1; /* 在棋盤上但不在棋子上 */
+}
+
+.rotate-arrow-up {
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-bottom: 30px solid #1f2937;
+    margin-top: -10px;
+}
+
+.rotate-arrow-down {
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 30px solid #1f2937;
+    margin-top: 10px;
+}
+
+.rotate-arrow-left {
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+    border-right: 30px solid #1f2937;
+    margin-left: -10px;
+}
+
+.rotate-arrow-right {
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+    border-left: 30px solid #1f2937;
+    margin-left: 10px;
 }
 

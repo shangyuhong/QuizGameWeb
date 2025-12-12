@@ -34,6 +34,18 @@ let gameState = {
     },
     ticTacToe2SelectedPiece: null, // {player, size, index} 或 null
     ticTacToe2GameOver: false,
-    ticTacToe2Winner: null
+    ticTacToe2Winner: null,
+    // 黑白轉轉棋狀態
+    reversiRotateBoard: Array(16).fill(null), // 4x4棋盤
+    reversiRotateCurrentPlayer: 'B', // B=黑方, W=白方
+    reversiRotateGameOver: false,
+    reversiRotateWinner: null,
+    reversiRotatePhase: 'move', // 'move': 移動對方棋子, 'place': 下自己的棋子, 'rotate': 旋轉
+    reversiRotateSelectedCell: null, // 選中的格子索引
+    reversiRotateHasMovedOpponent: false, // 是否已移動對方棋子
+    reversiRotateRotateCount: 0, // 棋盤滿格後的旋轉次數
+    reversiRotateTimer: null, // 計時器ID
+    reversiRotateTimeLeft: 15, // 剩餘時間（秒）
+    reversiRotateIsAnimating: false // 是否正在進行旋轉動畫
 };
 

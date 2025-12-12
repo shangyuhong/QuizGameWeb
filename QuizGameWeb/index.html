@@ -17,6 +17,7 @@
             <button class="btn btn-orange" onclick="showZhuyinKeyboard()">一叫高下</button>
             <button class="btn btn-red" onclick="showAdvancedTicTacToe()">進階圈叉</button>
             <button class="btn btn-teal" onclick="showAdvancedTicTacToe2()">奇雞連連</button>
+            <button class="btn btn-indigo" onclick="showReversiRotate()">黑白轉轉棋</button>
         </div>
     </div>
 
@@ -138,6 +139,18 @@
         </div>
     </div>
 
+    <!-- 黑白轉轉棋 -->
+    <div id="reversiRotate" class="screen">
+        <div class="container">
+            <button class="btn-back" onclick="confirmBackToMenu()">返回</button>
+            <h2>黑白轉轉棋</h2>
+            <div id="reversiRotateStatus" class="reversi-rotate-status"></div>
+            <div id="reversiRotateBoard" class="reversi-rotate-board"></div>
+            <button class="btn btn-blue" id="reversiRotateRotateBtn" onclick="rotateBoard()" disabled style="margin-top: 20px;">旋轉</button>
+            <button class="btn btn-blue" onclick="resetReversiRotate()" style="margin-top: 20px;">重新開始</button>
+        </div>
+    </div>
+
     <!-- 答案彈窗 -->
     <div id="answerPopup" class="popup">
         <div class="popup-content">
@@ -160,6 +173,7 @@
     <script src="js/zhuyinGame.js"></script>
     <script src="js/ticTacToe.js"></script>
     <script src="js/ticTacToe2.js"></script>
+    <script src="js/reversiRotate.js"></script>
     
     <!-- 初始化 -->
     <script src="app.js"></script>
