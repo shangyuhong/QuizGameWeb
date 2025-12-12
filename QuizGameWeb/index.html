@@ -15,6 +15,7 @@
             <button class="btn btn-purple" onclick="showWordGroup()">詞膳團體</button>
             <button class="btn btn-green" onclick="showGuessNameInput()">猜人名</button>
             <button class="btn btn-orange" onclick="showZhuyinKeyboard()">一叫高下</button>
+            <button class="btn btn-red" onclick="showAdvancedTicTacToe()">進階圈叉</button>
         </div>
     </div>
 
@@ -101,6 +102,18 @@
                 <div id="zhuyinKeyboardContent" class="zhuyin-keyboard-grid"></div>
             </div>
             <button class="btn btn-blue btn-large" id="zhuyinHoldAnswerBtn">按住查看答案</button>
+        </div>
+    </div>
+
+    <!-- 進階圈叉遊戲 -->
+    <div id="advancedTicTacToe" class="screen">
+        <div class="container">
+            <button class="btn-back" onclick="confirmBackToMenu()">返回</button>
+            <h2>進階圈叉</h2>
+            <div id="ticTacToeStatus" class="tic-tac-toe-status">玩家 O 的回合</div>
+            <div id="ticTacToeBoard" class="tic-tac-toe-board"></div>
+            <div id="ticTacToeResult" class="tic-tac-toe-result"></div>
+            <button class="btn btn-blue" onclick="resetTicTacToe()" style="margin-top: 20px;">重新開始</button>
         </div>
     </div>
 
