@@ -77,7 +77,6 @@ function handleTicTacToeCellClick(index) {
     
     // 添加新的移動
     gameState.ticTacToeBoard[index] = player;
-    console.log('[player] 檢查玩家:', player);
     moves.push(index);
     
     // 檢查勝利
@@ -86,7 +85,6 @@ function handleTicTacToeCellClick(index) {
         gameState.winner = player;
     } else {
         // 切換玩家
-        console.log('切換玩家');
         gameState.currentPlayer = player === 'O' ? 'X' : 'O';
     }
     
@@ -96,7 +94,6 @@ function handleTicTacToeCellClick(index) {
 function checkTicTacToeWin(player) {
     const board = gameState.ticTacToeBoard;
     // 插入一個 log，顯示目前的棋盤情況與當前正在檢查勝利的玩家
-    console.log('[checkWin] 檢查玩家:', player, '棋盤狀態:', board);
     const winPatterns = [
         [0, 1, 2], [3, 4, 5], [6, 7, 8], // 橫線
         [0, 3, 6], [1, 4, 7], [2, 5, 8], // 直線
