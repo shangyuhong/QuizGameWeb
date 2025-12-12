@@ -71,11 +71,12 @@ function renderTicTacToe2() {
     // 更新狀態（隱藏狀態文字，只在遊戲結束時顯示）
     if (gameState.ticTacToe2GameOver) {
         if (gameState.ticTacToe2Winner) {
-            status.textContent = `玩家 ${gameState.ticTacToe2Winner} 獲勝！`;
+            const winnerText = gameState.ticTacToe2Winner === 'O' ? '藍方' : '紅方';
+            status.textContent = `${winnerText}獲勝！`;
             status.style.color = '#22c55e';
             status.style.display = 'block';
         } else {
-            status.textContent = '平手！';
+            status.textContent = '和局';
             status.style.color = '#9ca3af';
             status.style.display = 'block';
         }
@@ -155,7 +156,16 @@ function renderPlayerPieces(player, container) {
 
 function selectPiece(player, size) {
     if (gameState.ticTacToe2CurrentPlayer !== player) return;
-    gameState.ticTacToe2SelectedPiece = { player, size };
+    
+    // 如果已經選中了相同的棋子，則取消選擇
+    const selected = gameState.ticTacToe2SelectedPiece;
+    if (selected && !selected.index && 
+        selected.player === player && 
+        selected.size === size) {
+        gameState.ticTacToe2SelectedPiece = null;
+    } else {
+        gameState.ticTacToe2SelectedPiece = { player, size };
+    }
     renderTicTacToe2();
 }
 
@@ -284,10 +294,17 @@ function handleCellClick2(index) {
     
     // 檢查勝利（檢查所有玩家，不只是當前玩家）
     // 因為移動最上層的棋子可能使得下層的棋子完成一條線
-    if (checkWin2('O')) {
+    const oWins = checkWin2('O');
+    const xWins = checkWin2('X');
+    
+    if (oWins && xWins) {
+        // 雙方都連成線，和局
+        gameState.ticTacToe2GameOver = true;
+        gameState.ticTacToe2Winner = null;
+    } else if (oWins) {
         gameState.ticTacToe2GameOver = true;
         gameState.ticTacToe2Winner = 'O';
-    } else if (checkWin2('X')) {
+    } else if (xWins) {
         gameState.ticTacToe2GameOver = true;
         gameState.ticTacToe2Winner = 'X';
     }
